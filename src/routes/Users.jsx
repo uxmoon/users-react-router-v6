@@ -18,11 +18,17 @@ export default function Users() {
         placeholder="Filter users"
       />
       <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={user.id.toString()}>{user.name}</Link>
-          </li>
-        ))}
+        {users
+          .filter((user) => {
+            if (!filter) return true;
+            const name = user.name.toLowerCase();
+            return name.includes(filter.toLowerCase());
+          })
+          .map((user) => (
+            <li key={user.id}>
+              <Link to={user.id.toString()}>{user.name}</Link>
+            </li>
+          ))}
       </ul>
     </div>
   );
