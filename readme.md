@@ -27,7 +27,7 @@ Based on [React Router v6 - Guía práctica desde CERO | Tutorial](https://youtu
 - To connect the `Outlet` with the Routes, wrap all routes under a new one and pass the `Layout` as an element
 - Replace `path` prop with `index` for the main Route/path match
 
-### URL Params
+### useParams hook
 
 **Users.jsx**
 
@@ -37,3 +37,18 @@ Based on [React Router v6 - Guía práctica desde CERO | Tutorial](https://youtu
 **User.jsx**
 
 - Import `useParams` hook to use the `:userId` from the url
+
+### useNavigate hook
+
+- This hook replace the `useHistory` hook, it uses a new API
+- Optionally you can add `replace: true` to skip the browser history
+- To move 2 steps forward or backwards you can set it with numbers
+- When we delete a user we can return to the Users list using the `useNavigate` hook
+- We set a `path` to move programatically
+
+```jsx
+const handleDelete = () => {
+  deleteUser(user.id);
+  navigate("/users");
+};
+```

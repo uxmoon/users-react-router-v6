@@ -1,9 +1,14 @@
-import { useParams } from "react-router-dom";
-import { getUser } from "../users";
+import { useNavigate, useParams } from "react-router-dom";
+import { deleteUser, getUser } from "../users";
 
 export default function User() {
   const params = useParams();
+  const navigate = useNavigate();
   const user = getUser(parseInt(params.userId));
+  const handleDelete = () => {
+    deleteUser(user.id);
+    navigate("/users");
+  };
   return (
     <div>
       <h1>{user.name}</h1>
@@ -15,6 +20,7 @@ export default function User() {
           <strong>Website:</strong> {user.website}
         </li>
       </ul>
+      <button onClick={handleDelete}>Delete user</button>
     </div>
   );
 }
