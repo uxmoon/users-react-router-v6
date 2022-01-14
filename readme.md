@@ -26,3 +26,14 @@ Based on [React Router v6 - Guía práctica desde CERO | Tutorial](https://youtu
 - Import `Outlet` to display the content of the route files
 - To connect the `Outlet` with the Routes, wrap all routes under a new one and pass the `Layout` as an element
 - Replace `path` prop with `index` for the main Route/path match
+
+### URL Params
+
+**Users.jsx**
+
+- We don't need to add the route in each Link, we only use the user id
+- To display an individual user we add a new Route with the user id `path="users/:userId`
+
+**User.jsx**
+
+- Import `useParams` hook to use the `:userId` from the url
