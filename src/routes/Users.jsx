@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, Outlet, useSearchParams } from "react-router-dom";
 import { getAllUsers } from "../users";
 
 export default function Users() {
@@ -30,6 +30,9 @@ export default function Users() {
             </li>
           ))}
       </ul>
+      <article>
+        <Outlet />
+      </article>
     </div>
   );
 }
