@@ -1,4 +1,4 @@
-import { Link, Outlet, useSearchParams } from "react-router-dom";
+import { NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { getAllUsers } from "../users";
 
 export default function Users() {
@@ -26,7 +26,12 @@ export default function Users() {
           })
           .map((user) => (
             <li key={user.id}>
-              <Link to={user.id.toString()}>{user.name}</Link>
+              <NavLink
+                style={({ isActive }) => (isActive ? { color: "red" } : {})}
+                to={user.id.toString()}
+              >
+                {user.name}
+              </NavLink>
             </li>
           ))}
       </ul>
