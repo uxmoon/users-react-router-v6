@@ -9,6 +9,12 @@ export default function User() {
     deleteUser(user.id);
     navigate("/users");
   };
+
+  // Display a message when no the id doesn't match an existing user
+  if (!user) {
+    return <p>The use doesn't exist.</p>;
+  }
+
   return (
     <div>
       <h1>{user.name}</h1>
