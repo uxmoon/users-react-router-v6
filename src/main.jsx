@@ -12,8 +12,9 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="users" element={<Users />} />
-        <Route path="users/:userId" element={<User />} />
+        <Route path="users" element={<Users />}>
+          <Route path=":userId" element={<User />} />
+        </Route>
         <Route path="about" element={<About />} />
         {/* <Route path="*" element={<h1>404 page not found</h1>} /> */}
         <Route path="*" element={<Navigate replace to="/" />} />
