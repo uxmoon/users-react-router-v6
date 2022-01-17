@@ -1,8 +1,15 @@
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import { getAllUsers } from "../users";
 
 export default function Users() {
   const users = getAllUsers();
+  const location = useLocation();
+
   const [searchParam, setSearchParams] = useSearchParams();
   const filter = searchParam.get("filter") ?? "";
   const handleFilter = (event) => {
@@ -28,7 +35,7 @@ export default function Users() {
             <li key={user.id}>
               <NavLink
                 style={({ isActive }) => (isActive ? { color: "red" } : {})}
-                to={user.id.toString()}
+                to={user.id.toString() + location.search}
               >
                 {user.name}
               </NavLink>

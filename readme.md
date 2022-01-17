@@ -70,14 +70,20 @@ const handleDelete = () => {
 };
 ```
 
-### useSearchParams
+### useSearchParams hook
 
-When filtering users is recommended to use query params:
-
-`http://localhost:3000/users?filter=name`
+When filtering users is recommended to use query params: `http://localhost:3000/users?filter=name`
 
 - You can copy and paste the search query in the address bar
 - Instead of using a `useState` hook we use the `useSearcParams` hook.
 - When using setSearchParams it expects a key and a value: `setSearchParamas({filter: e.target.value})`
 - The input value is equal to `searchParams.get("filter")` to match the key given
 - If filter is undefined or null we set up a fallback value `searchParam.get("filter") ?? ""`
+
+### useLocation hook
+
+To keep the filter query after the user click a name we use the useLocation hook.
+
+The hook returns an object and we use the search value and append it to the NavLink path value `to={user.id.toString() + location.search}`
+
+The url will have the user id and the filter query `http://localhost:3000/users/1?filter=nn`
