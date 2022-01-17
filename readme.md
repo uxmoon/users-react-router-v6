@@ -27,6 +27,23 @@ Based on [React Router v6 - Guía práctica desde CERO | Tutorial](https://youtu
 - To connect the `Outlet` with the Routes, wrap all routes under a new one and pass the `Layout` as an element
 - Replace `path` prop with `index` for the main Route/path match
 
+### Outlet more
+
+To display the user data in the same page as the users list we can use Outlet and update the Routes to nest them.
+
+```jsx
+// users.jsx
+  // users.map()
+  <article>
+    <Outlet />
+  </article>
+
+// main.jsx
+<Route path="users" element={<Users />}>
+  <Route path=":userId" element={<User />} />
+</Route>
+```
+
 ### useParams hook
 
 **Users.jsx**
@@ -52,3 +69,15 @@ const handleDelete = () => {
   navigate("/users");
 };
 ```
+
+### useSearchParams
+
+When filtering users is recommended to use query params:
+
+`http://localhost:3000/users?filter=name`
+
+- You can copy and paste the search query in the address bar
+- Instead of using a `useState` hook we use the `useSearcParams` hook.
+- When using setSearchParams it expects a key and a value: `setSearchParamas({filter: e.target.value})`
+- The input value is equal to `searchParams.get("filter")` to match the key given
+- If filter is undefined or null we set up a fallback value `searchParam.get("filter") ?? ""`
